@@ -9,11 +9,11 @@ const Movies = () => {
       <Navbar />
       <div className="container">
         <div className="row">
-          <Row title="Action" fetchUrl={requests.fetchActionMovies} />
-          <Row title="Comedy" fetchUrl={requests.fetchComedyMovies} />
-          <Row title="Horror" fetchUrl={requests.fetchHorrorMovies} />
-          <Row title="Romance" fetchUrl={requests.fetchRomanceMovies} />
-          <Row title="Documentary" fetchUrl={requests.fetchDocumentaries} />
+          <Row title="Action" fetchUrl={requests.fetchActionMovies} isLargeRow={true} />
+          <Row title="Comedy" fetchUrl={requests.fetchComedyMovies} isLargeRow={true} />
+          <Row title="Horror" fetchUrl={requests.fetchHorrorMovies} isLargeRow={true} />
+          <Row title="Romance" fetchUrl={requests.fetchRomanceMovies} isLargeRow={true} />
+          <Row title="Documentary" fetchUrl={requests.fetchDocumentaries} isLargeRow={true} />
         </div>
       </div>
     </div>
