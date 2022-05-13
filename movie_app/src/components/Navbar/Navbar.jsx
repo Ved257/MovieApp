@@ -1,9 +1,13 @@
 import React from "react";
-import FeatherIcons from "feather-icons-react";
-import './Navbar.css';
+// import FeatherIcons from "feather-icons-react";
+import "./Navbar.css";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Search } from "@material-ui/icons";
 
 const Navbar = () => {
+  const [showSearch, setShowSearch] = useState(false);
+
   return (
     <div>
       <div className="navbar">
@@ -17,9 +21,21 @@ const Navbar = () => {
           <Link to="/tv">TV Shows</Link>
           <Link to="/newAndPopular">New and Popular</Link>
         </div>
-        <div className="search-bar">
-          <FeatherIcons icon="search" size="24" />
-        </div>
+        <form className={showSearch ? "search-bar-show" : "search-bar"}>
+          <input
+            //hide search field if not in focus and clear the text entered.
+            onBlur={() => {
+              setShowSearch(false);
+            }}
+            required
+            placeholder="Titles, name ..."
+            type="search"
+          />
+          <Search
+            style={showSearch ? { zIndex: "1" } : { display: "none" }}
+            className="searchIcon"
+          />
+        </form>
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import React from "react";
 import Row from "../components/Row/Row";
 import requests from "../axios/requests";
 import Navbar from "../components/Navbar/Navbar";
+import Footer from "../components/Footer/Footer";
 
 const Movies = () => {
   return (
@@ -16,6 +17,7 @@ const Movies = () => {
           <Row title="Documentary" fetchUrl={requests.fetchDocumentaries} isLargeRow={true} />
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

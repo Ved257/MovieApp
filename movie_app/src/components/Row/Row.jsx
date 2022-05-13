@@ -9,8 +9,8 @@ import axios from "../../axios/axios";
 // import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
 // import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 // import Details from "../Details/Details";
-// import PlayArrow from "@material-ui/icons/PlayArrow";
-import FeatherIcons from "feather-icons-react";
+import PlayArrow from "@material-ui/icons/PlayArrow";
+// import FeatherIcons from "feather-icons-react";
 import Close from "@material-ui/icons/Close";
 
 const base_url = "https://image.tmdb.org/t/p/original/";
@@ -34,7 +34,6 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
     fetchData();
   }, [fetchUrl]);
 
-
   // const MovieTrailer = async (movie) => {
   //   if (movie) {
   //     const trailerUrl = await movieTrailer(movie.title);
@@ -49,7 +48,6 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
   //     setTrailerUrl(trailerUrlId);
   //   }
   // };
-
 
   return (
     <div>
@@ -69,7 +67,9 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
               await setShow(true);
               await setImage(movie.backdrop_path);
               await setDescription(movie.overview);
-              await setMovieTitle(movie.title|| movie.name|| movie.original_name);
+              await setMovieTitle(
+                movie.title || movie.name || movie.original_name
+              );
               console.log(movieTitle);
             }}
           />
@@ -93,17 +93,20 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
               </h5> */}
               <p className="desc__description">{description}</p>
               <div className="desc__buttons">
-                <span className="button_text">
-                  {/* <PlayArrow
-                  style={{
-                    fontSize: "3rem",
-                  }} >
-                    Play
-                  </PlayArrow> */}
-                  <button className="play_button">
-                    <FeatherIcons icon="play" size="24" />{' '} Play
-                    </button>
-                </span>
+                {/* <button className="play_button">
+                  <span className="button_text">
+                    <PlayArrow />
+                    &nbsp; Play
+                  </span>
+                </button> */}
+                <button
+                  className="play_button"
+                >
+                  <span className="button__text">
+                     <PlayArrow /> 
+                    &nbsp; Play
+                  </span>
+                </button>
               </div>
             </div>
           </div>
@@ -111,8 +114,8 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
             className="desc__img"
             style={{
               backgroundImage: `url(${base_url}${image})`,
-            }}>
-            </div>
+            }}
+          ></div>
         </div>
       </div>
     </div>

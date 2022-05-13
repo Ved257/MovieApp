@@ -3,6 +3,7 @@ import "./Home.css";
 import Row from "../components/Row/Row";
 import requests from "../axios/requests";
 import Navbar from "../components/Navbar/Navbar";
+import Footer from "../components/Footer/Footer";
 
 const Home = () => {
   return (
@@ -23,6 +24,7 @@ const Home = () => {
           <Row title="Documentary" fetchUrl={requests.fetchDocumentaries} isLargeRow={true}/>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
