@@ -1,40 +1,30 @@
 import React from "react";
 import "./Home.css";
-import FeatherIcons from "feather-icons-react";
 import Row from "../components/Row/Row";
 import requests from "../axios/requests";
+import Navbar from "../components/Navbar/Navbar";
 
-const Home =()=> {
-
+const Home = () => {
   return (
     <div className="Home">
-      <div className="navbar">
-        <div className="navbar-brand">
-          <h1>Movie App</h1>
-        </div>
-        <div className="navbar-links">
-          <a href="/">Home</a>
-          <a href="/">About</a>
-          <a href="/">Contact</a>
-        </div>
-        <div className="search-bar">
-          <FeatherIcons icon="search" size="24" />
-        </div>
-      </div>
+      <Navbar />
       <div className="container">
         <div className="row">
-          <Row title="Trending now" fetchUrl={requests.fetchTrending} isLargeRow={true} />
-          <Row title="Top Rated" fetchUrl={requests.fetchTopRated} />
-          <Row title="Action" fetchUrl={requests.fetchActionMovies} />
-          <Row title="Comedy" fetchUrl={requests.fetchComedyMovies} />
-          <Row title="Horror" fetchUrl={requests.fetchHorrorMovies} />
-          <Row title="Romance" fetchUrl={requests.fetchRomanceMovies} />
-          <Row title="Documentary" fetchUrl={requests.fetchDocumentaries} />
-          
+          <Row
+            title="Trending now"
+            fetchUrl={requests.fetchTrending}
+            isLargeRow={true}
+          />
+          <Row title="Top Rated" fetchUrl={requests.fetchTopRated} isLargeRow={true} />
+          <Row title="Action" fetchUrl={requests.fetchActionMovies} isLargeRow={true}/>
+          <Row title="Comedy" fetchUrl={requests.fetchComedyMovies} isLargeRow={true}/>
+          <Row title="Horror" fetchUrl={requests.fetchHorrorMovies} isLargeRow={true}/>
+          <Row title="Romance" fetchUrl={requests.fetchRomanceMovies} isLargeRow={true} />
+          <Row title="Documentary" fetchUrl={requests.fetchDocumentaries} isLargeRow={true}/>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Home;
