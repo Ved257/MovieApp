@@ -99,11 +99,9 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
                     &nbsp; Play
                   </span>
                 </button> */}
-                <button
-                  className="play_button"
-                >
+                <button className="play_button">
                   <span className="button__text">
-                     <PlayArrow /> 
+                    <PlayArrow />
                     &nbsp; Play
                   </span>
                 </button>

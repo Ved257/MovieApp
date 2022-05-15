@@ -7,6 +7,7 @@
   /* justify-content: center; */
   background-color: #000000;
   color: azure;
+  min-height: 100vh;
 }
 
 .navbar {
@@ -63,7 +64,6 @@ a:hover:after {
   text-decoration-color: #fff;
 }
 
-
 .search-bar {
   padding-left: 5%;
   padding-top: 2%;
@@ -80,4 +80,3 @@ a:hover:after {
   color: azure;
   border-color: #ff0000;
 }
-

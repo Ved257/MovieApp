@@ -12,6 +12,8 @@ import MenuItem from "@mui/material/MenuItem";
 import { styled, alpha } from "@mui/material/styles";
 import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const pages = [
   { name: "Movies", url: "/movies" },
@@ -62,7 +64,22 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const Navbar = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [search, setSearch] = useState("");
+
+  const handleSearchChange = (event) => {
+    //Get value from input
+    var searchValue = event.target.value;
+    searchValue = searchValue.trim();
+    setSearch(searchValue);
+  };
+
+  // Handle search submit
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+    window.location.href = `/search/${search}`;
+    setSearch("");
+  };
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -164,15 +181,18 @@ const Navbar = () => {
               </Button>
             ))}
           </Box>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
+          <form onSubmit={handleSearchSubmit}>
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Search…"
+                inputProps={{ "aria-label": "search" }}
+                onChange={handleSearchChange}
+              />
+            </Search>
+          </form>
         </Toolbar>
       </Container>
     </AppBar>

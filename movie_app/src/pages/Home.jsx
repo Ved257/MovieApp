@@ -16,12 +16,36 @@ const Home = () => {
             fetchUrl={requests.fetchTrending}
             isLargeRow={true}
           />
-          <Row title="Top Rated" fetchUrl={requests.fetchTopRated} isLargeRow={true} />
-          <Row title="Action" fetchUrl={requests.fetchActionMovies} isLargeRow={true}/>
-          <Row title="Comedy" fetchUrl={requests.fetchComedyMovies} isLargeRow={true}/>
-          <Row title="Horror" fetchUrl={requests.fetchHorrorMovies} isLargeRow={true}/>
-          <Row title="Romance" fetchUrl={requests.fetchRomanceMovies} isLargeRow={true} />
-          <Row title="Documentary" fetchUrl={requests.fetchDocumentaries} isLargeRow={true}/>
+          <Row
+            title="Top Rated"
+            fetchUrl={requests.fetchTopRated}
+            isLargeRow={true}
+          />
+          <Row
+            title="Action"
+            fetchUrl={requests.fetchActionMovies}
+            isLargeRow={true}
+          />
+          <Row
+            title="Comedy"
+            fetchUrl={requests.fetchComedyMovies}
+            isLargeRow={true}
+          />
+          <Row
+            title="Horror"
+            fetchUrl={requests.fetchHorrorMovies}
+            isLargeRow={true}
+          />
+          <Row
+            title="Romance"
+            fetchUrl={requests.fetchRomanceMovies}
+            isLargeRow={true}
+          />
+          <Row
+            title="Documentary"
+            fetchUrl={requests.fetchDocumentaries}
+            isLargeRow={true}
+          />
         </div>
       </div>
       <Footer />
