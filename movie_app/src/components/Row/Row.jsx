@@ -3,8 +3,11 @@ import { useEffect } from "react";
 import React from "react";
 import "./Row.css";
 // import YouTube from "react-youtube";
-// import movieTrailer from "movie-trailer";
+import movieTrailer from "movie-trailer";
 import axios from "../../axios/axios";
+import ReactPlayer from "react-player";
+import Box from "@mui/material/Box";
+
 // import Details from "../Details/Details";
 // import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
 // import NavigateNextIcon from "@material-ui/icons/NavigateNext";
@@ -12,6 +15,14 @@ import axios from "../../axios/axios";
 import PlayArrow from "@material-ui/icons/PlayArrow";
 // import FeatherIcons from "feather-icons-react";
 import Close from "@material-ui/icons/Close";
+import Modal from "@mui/material/Modal";
+
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+};
 
 const base_url = "https://image.tmdb.org/t/p/original/";
 
@@ -21,10 +32,12 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
   const [image, setImage] = useState("");
   const [movieTitle, setMovieTitle] = useState("");
   const [show, setShow] = useState(false);
+  const [open, setOpen] = useState(false);
+  const handleCloseModal = () => setOpen(false);
 
   const handleClose = () => setShow(false);
 
-  // const [trailerUrl, setTrailerUrl] = useState("");
+  const [trailerUrl, setTrailerUrl] = useState("");
   useEffect(() => {
     async function fetchData() {
       const request = await axios.get(fetchUrl);
@@ -34,6 +47,13 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
     fetchData();
   }, [fetchUrl]);
 
+  const handlePlayClick = async (event) => {
+    event.preventDefault();
+    const t = await movieTrailer(movieTitle);
+    console.log(t);
+    setOpen(true);
+    setTrailerUrl(t);
+  };
   // const MovieTrailer = async (movie) => {
   //   if (movie) {
   //     const trailerUrl = await movieTrailer(movie.title);
@@ -70,7 +90,6 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
               await setMovieTitle(
                 movie.title || movie.name || movie.original_name
               );
-              console.log(movieTitle);
             }}
           />
         ))}
@@ -86,6 +105,16 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
             <Close />
           </div>
           <div className="desc__content">
+            <Modal
+              open={open}
+              onClose={handleCloseModal}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+            >
+              <Box sx={style}>
+                <ReactPlayer url={trailerUrl} controls={true} />
+              </Box>
+            </Modal>
             <div className="desc__heading">
               <h1>{movieTitle}</h1>
               {/* <h5>
@@ -99,7 +128,11 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
                     &nbsp; Play
                   </span>
                 </button> */}
-                <button className="play_button">
+                <button
+                  className="play_button"
+                  id={movieTitle}
+                  onClick={handlePlayClick}
+                >
                   <span className="button__text">
                     <PlayArrow />
                     &nbsp; Play
